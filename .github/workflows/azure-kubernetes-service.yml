@@ -35,7 +35,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_CONTAINER_REGISTRY: "uiflowazureregistry.azurecr.io"
+  AZURE_CONTAINER_REGISTRY: "uiflowazureregistry"
   CONTAINER1_NAME: "davidsauthtestcg8zajs7-main"
   CONTAINER2_NAME: "davidsauthtestcg8zajs7-main-vault"
   RESOURCE_GROUP: "VisualStudioOnline-4D0328C95EBE4FB5AB15705A40721342"
