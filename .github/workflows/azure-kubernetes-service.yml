@@ -38,7 +38,7 @@ env:
   AZURE_CONTAINER_REGISTRY: "uiflowazureregistry.azurecr.io"
   CONTAINER1_NAME: "davidsauthtestcg8zajs7-main"
   CONTAINER2_NAME: "davidsauthtestcg8zajs7-main-vault"
-  RESOURCE_GROUP: "msauthtest"
+  RESOURCE_GROUP: "VisualStudioOnline-4D0328C95EBE4FB5AB15705A40721342"
   CLUSTER_NAME: "uiflowauthtest"
   DEPLOYMENT_MANIFEST_PATH: "your-deployment-manifest-path"
 
