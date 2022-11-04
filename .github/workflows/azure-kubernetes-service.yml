@@ -63,8 +63,14 @@ jobs:
       # Builds and pushes an image up to your Azure Container Registry
       - name: Build and push image to ACR
         run: |
-          az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER1_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
-          az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER2_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
+          docker load --input davidsauthtestcg8zajs7-main.image
+          docker build -t davidsauthtestcg8zajs7-main-vault ./vault
+          docker tag davidsauthtestcg8zajs7-main $acr_name.azurecr.io/davidsauthtestcg8zajs7-main
+          docker tag davidsauthtestcg8zajs7-main-vault $acr_name.azurecr.io/davidsauthtestcg8zajs7-main-vault
+
+          docker push $acr_name.azurecr.io/davidsauthtestcg8zajs7-main
+          docker push $acr_name.azurecr.io/davidsauthtestcg8zajs7-main-vault
+
 
   deploy:
     permissions:
