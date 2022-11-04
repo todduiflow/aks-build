@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  uiflow_server:
+    image: $uiflow_image
+    container_name: $uiflow_image
+    ports:
+      - '80:80'
+    command: server.js $vault_image $unseal_key $token
+    depends_on:
+      - 'vault'
+  vault:
+    build:
+      context: ./vault
+      dockerfile: Dockerfile
+    image: $vault_image
+    container_name: $vault_image
+    ports:
+      - '8200:8200'
+    environment:
+      - VAULT_ADDR=http://127.0.0.1:8200
+    command: server -config=/vault/config/vault-config.json
+    cap_add:
+      - IPC_LOCK

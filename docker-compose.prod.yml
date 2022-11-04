@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  uiflow_server:
+    domainname: $uiflow_image
+    image: $azure_acr/$uiflow_image
+    container_name: $uiflow_image
+    ports:
+      - '80:80'
+    command: node server.js $vault_image $unseal_key $token
+    depends_on:
+      - 'vault'
+  vault:
+    build: .
+    domainname: $uiflow_image
+    image: $azure_acr/$vault_image
+    container_name: $vault_image
+    ports:
+      - '8200:8200'
+    environment:
+      - VAULT_ADDR=http://127.0.0.1:8200
+      - VAULT_DISABLE_MLOCK=true
+    command: vault server -config=/vault/config/vault-config.json
+    cap_add:
+      - IPC_LOCK
