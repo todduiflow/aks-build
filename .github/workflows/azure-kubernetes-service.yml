@@ -65,11 +65,11 @@ jobs:
         run: |
           docker load --input davidsauthtestcg8zajs7-main.image
           docker build -t davidsauthtestcg8zajs7-main-vault ./vault
-          docker tag davidsauthtestcg8zajs7-main $acr_name.azurecr.io/davidsauthtestcg8zajs7-main
-          docker tag davidsauthtestcg8zajs7-main-vault $acr_name.azurecr.io/davidsauthtestcg8zajs7-main-vault
+          docker tag davidsauthtestcg8zajs7-main uiflowazureregistry.azurecr.io/davidsauthtestcg8zajs7-main
+          docker tag davidsauthtestcg8zajs7-main-vault uiflowazureregistry.azurecr.io/davidsauthtestcg8zajs7-main-vault
 
-          docker push $acr_name.azurecr.io/davidsauthtestcg8zajs7-main
-          docker push $acr_name.azurecr.io/davidsauthtestcg8zajs7-main-vault
+          docker push uiflowazureregistry.azurecr.io/davidsauthtestcg8zajs7-main
+          docker push uiflowazureregistry.azurecr.io/davidsauthtestcg8zajs7-main-vault
 
 
   deploy:
